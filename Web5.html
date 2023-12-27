@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Fetcher</title>
+    <script>
+        function fetchData() {
+            // URL of the website you want to fetch data from
+            const url = 'https://www.google.com/'; // Replace this with the actual URL
+            
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Manipulate the received data here
+                    console.log(data); // For example, log the data to the console
+                    // Display the data as text on the webpage
+                    document.getElementById('displayData').innerText = JSON.stringify(data);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Data Fetcher</h1>
+    <button onclick="fetchData()">Fetch Data</button>
+    <textarea id="displayData" rows="10" cols="50"></textarea>
+</body>
+</html>
+
